@@ -31,7 +31,6 @@ namespace CrudResourceIT.Controllers
 		}
 
 		[HttpPost]
-		[ValidateAntiForgeryToken]
 		public ActionResult Create(User user)
 		{
 			_userRepository.Add(user);

@@ -21,12 +21,12 @@ namespace CrudResourceIT.Repository
 
 		public User GetById(Guid id)
 		{
-			return Db.Set<User>().Find(id);
+			return Db.Set<User>().Include(u => u.Detail).Where(u => u.Id == id).FirstOrDefault();
 		}
 
 		public IEnumerable<User> GetAll()
 		{
-			return Db.Set<User>().ToList();
+			return Db.Set<User>().Include(u => u.Detail).ToList();
 		}
 
 		public void Update(User user)
