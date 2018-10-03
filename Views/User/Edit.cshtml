@@ -1,7 +1,65 @@
-﻿
+﻿@model CrudResourceIT.Domain.Entities.User
 @{
-    ViewBag.Title = "Update";
+	ViewBag.Title = "Update";
 }
 
 <h2>Update</h2>
 
+<div class="row" hidden>
+	<div class="col-lg-6">
+		<div class="form-group">
+			<label for="basic-url">Id</label>
+			<div class="form-group">
+				<input type="text" class="form-control" id="id" value=@Html.DisplayFor(model => model.Id) required aria-describedby="basic-addon3">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-6">
+		<div class="form-group">
+			<label for="basic-url">Nome</label>
+			<div class="form-group">
+				<input type="text" class="form-control" id="firstname" value=@Html.DisplayFor(model => model.FirstName)  required aria-describedby="basic-addon3">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-6">
+		<label for="basic-url">Sobrenome</label>
+		<div class="form-group">
+			<input type="text" class="form-control" id="lastname" value=@Html.DisplayFor(model => model.LastName) required aria-describedby="basic-addon3">
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-6">
+		<label for="basic-url">Email</label>
+		<div class="form-group">
+			<input type="text" class="form-control" id="email" value=@Html.DisplayFor(model => model.Email) required aria-describedby="basic-addon3">
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-6">
+		<label for="basic-url">Endereço</label>
+		<div class="form-group">
+			<input type="text" class="form-control" id="address" value=@Html.DisplayFor(model => model.Detail.Address) required aria-describedby="basic-addon3">
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-6">
+		<label for="basic-url">Telefone</label>
+		<div class="form-group">
+			<input type="text" class="form-control" id="phone" value=@Html.DisplayFor(model => model.Detail.Phone) required aria-describedby="basic-addon3">
+		</div>
+	</div>
+</div>
+<div class="col-md-12">
+	<button type="button" onclick="edit()" id="btn-cadastrar" class="btn btn-primary btn-lg">Editar</button>
+</div>
+
+<script src="~/Scripts/app/edit.js"></script>

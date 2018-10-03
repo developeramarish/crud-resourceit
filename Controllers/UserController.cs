@@ -38,13 +38,14 @@ namespace CrudResourceIT.Controllers
 		}
 
 
-		public ActionResult Edit(string id)
+		public ActionResult Edit(Guid id)
 		{
-			return View();
+			var user = _userRepository.GetById(id);
+			return View(user);
 		}
 
 		[HttpPut]
-		public ActionResult Edit(User user)
+		public ActionResult Update(Guid id, User user)
 		{
 			_userRepository.Update(user);
 			return RedirectToAction("Index");
