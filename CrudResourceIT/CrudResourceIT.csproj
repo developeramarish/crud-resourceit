@@ -175,6 +175,7 @@
     <Compile Include="Domain\Entities\BaseEntity.cs" />
     <Compile Include="Domain\Entities\Detail.cs" />
     <Compile Include="Domain\Entities\User.cs" />
+    <Compile Include="Domain\Validators\UserValidator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
