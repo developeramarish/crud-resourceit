@@ -52,7 +52,6 @@ namespace CrudResourceIT.Controllers
 		}
 
 		[HttpDelete]
-		[ValidateAntiForgeryToken]
 		public ActionResult Delete(Guid id)
 		{
 			var user = _userRepository.GetById(id);
