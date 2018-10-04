@@ -1,6 +1,8 @@
 ﻿using CrudResourceIT.Domain.Entities;
+using CrudResourceIT.Domain.Validators;
 using CrudResourceIT.Http;
 using CrudResourceIT.Repository;
+using FluentValidation.Results;
 using Microsoft.Ajax.Utilities;
 using System;
 using System.Net;
@@ -38,9 +40,17 @@ namespace CrudResourceIT.Controllers
 		{
 			try
 			{
-				_userRepository.Add(user);
-				var successModel = new { message = "Usuário criado com sucesso.", success = true };
-				return new JsonHttpStatusResult(successModel, HttpStatusCode.OK);
+				var validator = new UserValidator();
+				ValidationResult results = validator.Validate(user);
+				if (results.IsValid)
+				{
+					_userRepository.Add(user);
+					var successModel = new { message = "Usuário criado com sucesso.", success = true };
+					return new JsonHttpStatusResult(successModel, HttpStatusCode.OK);
+				}
+				var errorModel = new { message = results.Errors[0].ToString(), success = false };
+				return new JsonHttpStatusResult(errorModel, HttpStatusCode.BadRequest);
+
 			}
 			catch (Exception)
 			{
@@ -61,9 +71,18 @@ namespace CrudResourceIT.Controllers
 		{
 			try
 			{
-				_userRepository.Update(user);
-				var successModel = new { message = "Usuário editado com sucesso.", success = true };
-				return new JsonHttpStatusResult(successModel, HttpStatusCode.OK);
+				var validator = new UserValidator();
+				ValidationResult results = validator.Validate(user);
+				if (results.IsValid)
+				{
+					_userRepository.Update(user);
+					var successModel = new { message = "Usuário editado com sucesso.", success = true };
+					return new JsonHttpStatusResult(successModel, HttpStatusCode.OK);
+
+				}
+				var errorModel = new { message = results.Errors[0].ToString(), success = false };
+				return new JsonHttpStatusResult(errorModel, HttpStatusCode.BadRequest);
+
 			}
 			catch (Exception)
 			{
