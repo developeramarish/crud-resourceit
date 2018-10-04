@@ -163,6 +163,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Http\JsonHttpStatusResult.cs" />
     <Compile Include="Migrations\201810031800049_FirstMigration.cs" />
     <Compile Include="Migrations\201810031800049_FirstMigration.Designer.cs">
       <DependentUpon>201810031800049_FirstMigration.cs</DependentUpon>

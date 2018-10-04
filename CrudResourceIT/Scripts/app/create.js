@@ -17,13 +17,14 @@
 		url: '/User/Create',
 		data: JSON.stringify(user),
 		success: function (data) {
-			if (data.success != null) {
-			}
-			else {
-
-			}
+			$('#modal-success').modal();
+			$('.modal-title').html("Sucesso!")
+			$('.modal-body').html(data.message);
 		},
 		error: function (data) {
+			$('#modal-danger').modal();
+			$('.modal-title').html("Erro!")
+			$('.modal-body').html(data.message);
 		}
 	});
 }

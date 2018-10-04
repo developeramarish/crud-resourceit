@@ -1,6 +1,9 @@
 ﻿using CrudResourceIT.Domain.Entities;
+using CrudResourceIT.Http;
 using CrudResourceIT.Repository;
+using Microsoft.Ajax.Utilities;
 using System;
+using System.Net;
 using System.Web.Mvc;
 
 namespace CrudResourceIT.Controllers
@@ -31,10 +34,19 @@ namespace CrudResourceIT.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Create(User user)
+		public JsonHttpStatusResult Create(User user)
 		{
-			_userRepository.Add(user);
-			return RedirectToAction("Index");
+			try
+			{
+				_userRepository.Add(user);
+				var successModel = new { message = "Usuário criado com sucesso.", success = true };
+				return new JsonHttpStatusResult(successModel, HttpStatusCode.OK);
+			}
+			catch (Exception)
+			{
+				var errorModel = new { message = "Ocorreu um erro" };
+				return new JsonHttpStatusResult(errorModel, HttpStatusCode.InternalServerError); 
+			}
 		}
 
 
@@ -45,18 +57,36 @@ namespace CrudResourceIT.Controllers
 		}
 
 		[HttpPut]
-		public ActionResult Update(Guid id, User user)
+		public JsonHttpStatusResult Update(Guid id, User user)
 		{
-			_userRepository.Update(user);
-			return RedirectToAction("Index");
+			try
+			{
+				_userRepository.Update(user);
+				var successModel = new { message = "Usuário editado com sucesso.", success = true };
+				return new JsonHttpStatusResult(successModel, HttpStatusCode.OK);
+			}
+			catch (Exception)
+			{
+				var errorModel = new { message = "Ocorreu um erro" };
+				return new JsonHttpStatusResult(errorModel, HttpStatusCode.InternalServerError);
+			}
 		}
 
 		[HttpDelete]
-		public ActionResult Delete(Guid id)
+		public JsonHttpStatusResult Delete(Guid id)
 		{
-			var user = _userRepository.GetById(id);
-			_userRepository.Remove(user);
-			return RedirectToAction("Index");
+			try
+			{
+				var user = _userRepository.GetById(id);
+				_userRepository.Remove(user);
+				var successModel = new { message = "Usuário deletado com sucesso.", success = true };
+				return new JsonHttpStatusResult(successModel, HttpStatusCode.OK);
+			}
+			catch (Exception)
+			{
+				var errorModel = new { message = "Ocorreu um erro" };
+				return new JsonHttpStatusResult(errorModel, HttpStatusCode.InternalServerError);
+			}
 		}
 	}
 }
