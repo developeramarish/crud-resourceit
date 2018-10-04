@@ -2,10 +2,10 @@
 @model CrudResourceIT.Domain.Entities.User
 
 @{
-	ViewBag.Title = "Details";
+	ViewBag.Title = "Detalhes do usuário";
 }
 
-<h2>Details</h2>
+<h2>Detalhes do Usuário</h2>
 
 <div>
 	<dl class="dl-horizontal">
@@ -28,27 +28,25 @@
 		<dt>
 			@Html.DisplayNameFor(model => model.Email)
 		</dt>
-
 		<dd>
 			@Html.DisplayFor(model => model.Email)
 		</dd>
 		<dt>
 			@Html.DisplayNameFor(model => model.Detail.Address)
 		</dt>
-
 		<dd>
 			@Html.DisplayFor(model => model.Detail.Address)
-		</dd>
-		<dd>
-			@Html.DisplayFor(model => model.Detail.Phone)
 		</dd>
 		<dt>
 			@Html.DisplayNameFor(model => model.Detail.Phone)
 		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Detail.Phone)
+		</dd>
 	</dl>
 </div>
 <p>
-	@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-	@Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+	@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
 </p>
 
