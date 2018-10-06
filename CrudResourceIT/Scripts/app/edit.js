@@ -23,7 +23,7 @@
 		error: function (data) {
 			$('#modal-danger').modal();
 			$('.modal-title').html("Erro!")
-			$('.modal-body').html(data.message);
+            $('.modal-body').html(data.responseJSON.message);
 		}
 	});
 }

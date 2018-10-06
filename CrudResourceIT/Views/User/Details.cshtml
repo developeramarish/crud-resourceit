@@ -10,7 +10,7 @@
 <div>
 	<dl class="dl-horizontal">
 		<dt>
-			@Html.DisplayNameFor(model => model.FirstName)
+			Nome
 		</dt>
 
 		<dd>
@@ -18,7 +18,7 @@
 		</dd>
 
 		<dt>
-			@Html.DisplayNameFor(model => model.LastName)
+			Sobrenome
 		</dt>
 
 		<dd>
@@ -26,19 +26,19 @@
 		</dd>
 
 		<dt>
-			@Html.DisplayNameFor(model => model.Email)
+			Email
 		</dt>
 		<dd>
 			@Html.DisplayFor(model => model.Email)
 		</dd>
 		<dt>
-			@Html.DisplayNameFor(model => model.Detail.Address)
+			Endereço
 		</dt>
 		<dd>
 			@Html.DisplayFor(model => model.Detail.Address)
 		</dd>
 		<dt>
-			@Html.DisplayNameFor(model => model.Detail.Phone)
+			Telefone
 		</dt>
 		<dd>
 			@Html.DisplayFor(model => model.Detail.Phone)
@@ -46,7 +46,7 @@
 	</dl>
 </div>
 <p>
-	@Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
-	@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+	@Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+	@Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-primary" })
 </p>
 
